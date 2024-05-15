@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var isActive: Bool = false
+    
     @State var loveLanguage: String? = nil
     
     @State var loveLanguageSelect: String? = nil
@@ -72,10 +74,27 @@ struct ContentView: View {
                             Text("Esse aplicativo é para te ajudar a reservar tempo para usar com as pessoas que você ama a partir da sua linguagem do amor.")
                                 .foregroundStyle(.color333030)
                                 .font(.system(size: 18))
+                            ZStack {
+                                VStack {
+                                    Button(action: {
+                                        isActive = true
+                                    }, label: {
+                                        Text("Mais sobre linguagem do amor")
+                                            .frame(maxWidth: .infinity)
+                                            //sublinhar esse texto
+                                            
+                                        if isActive {
+                                            CustomDialog(isActive: $isActive, title: "Mais sobre", message: "testando", action: {})
+                                        }
+                                    })
+                                }
+                            }
+                            
                             
                             VStack (alignment: .leading, spacing: 8.0){
                                 Text("Qual a sua linguagem do amor?")
                             }
+                            
                             DropDownPicker(
                                 selection: $loveLanguageSelect,
                                 options: [
@@ -94,6 +113,7 @@ struct ContentView: View {
                                 Text("Quantas horas você passa acordado no dia?")
                                 Slider(value: $hour, in: 1...23)
                                     .accentColor(.primarycolor)
+                                    
                                 Text("\(hour, specifier: "%.0f")")
                             }
                             
