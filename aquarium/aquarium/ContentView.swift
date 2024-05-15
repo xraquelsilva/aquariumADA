@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State var loveLanguage: String? = nil
     
-    @State var loveLanguageSelect: loveLanguage = .bottom
+    @State var loveLanguageSelect: String? = nil
     
     @State private var hour: Float = 3
     
@@ -29,8 +29,10 @@ struct ContentView: View {
     
     
     var body: some View {
+        
         ZStack (alignment: .top){
             Color.backgroundcolor
+            
             ZStack {
                 VStack (alignment: .leading, spacing: 12.0) {
                     
@@ -61,6 +63,7 @@ struct ContentView: View {
                     }
                     
                     ScrollView {
+                        
                         VStack (alignment: .leading, spacing: 18.0){
                             Text("Olá, peixinho!")
                                 .foregroundStyle(.color333030)
@@ -70,8 +73,21 @@ struct ContentView: View {
                                 .foregroundStyle(.color333030)
                                 .font(.system(size: 18))
                             
-                            //pull-down button
-                            
+                            VStack (alignment: .leading, spacing: 8.0){
+                                Text("Qual a sua linguagem do amor?")
+                            }
+                            DropDownPicker(
+                                selection: $loveLanguageSelect,
+                                options: [
+                                    "Tempo de qualidade",
+                                    "Toque físico",
+                                    "Palavras de afirmação",
+                                    "Presentes",
+                                    "Atos de serviço"
+                                ]
+                            )
+                            .frame(width: 345, height: 50)
+                            .frame(maxWidth: .infinity)
                             
                             
                             VStack (alignment: .leading, spacing: 8.0 ){
@@ -80,8 +96,6 @@ struct ContentView: View {
                                     .accentColor(.primarycolor)
                                 Text("\(hour, specifier: "%.0f")")
                             }
-                            
-                            
                             
                             VStack (alignment: .leading, spacing: 8.0){
                                 Text("Quantas horas você gasta com trabalho e/ou estudos?")
@@ -96,7 +110,7 @@ struct ContentView: View {
                             VStack (alignment: .leading, spacing: 8.0) {
                                 Text("Quantas horas você tem de lazer?")
                                 TextField("Quantidade de horas reservadas para lazer", value: $hourRest, format:
-                                        .number)
+                                            .number)
                             }
                             
                             VStack (alignment: .leading, spacing: 8.0) {
@@ -104,10 +118,9 @@ struct ContentView: View {
                                 TextField("Quantidade de horas em transporte", value: $hourRest, format: .number)
                             }
                             
-                            //                                VStack (alignment: .leading, spacing: 8.0) {
-                            //                                    Text("Se alguma atividade não tiver sido incluída, coloque aqui a quantidade de horas que você também usa em atividades diversas")
-                            //                                    TextField("Quantidade de horas também em uso", value: $hourRest, format: .number)
-                            //                                }
+//                            VStack (alignment: .leading, spacing: 8.0) {
+//                                  Text("Se alguma atividade não tiver sido incluída, coloque aqui a quantidade de horas que você também usa em atividades diversas")
+//                                TextField("Quantidade de horas também em uso", value: $hourRest, format: .number)}
                             
                             Button(action: processFreeTime, label: {
                                 ZStack {
@@ -119,7 +132,7 @@ struct ContentView: View {
                                 .cornerRadius(10)
                                 .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                             })
-                            .frame(width: 311, height: 50)
+                            .frame(width: 345, height: 50)
                             .frame(maxHeight: 50)
                             .frame(maxWidth: .infinity)
                         }
@@ -138,8 +151,91 @@ struct ContentView: View {
     func processFreeTime() {
         //calculo em si
     }
+    
+}
+
+struct DropDownPicker: View {
+    
+    @Binding var selection: String?
+    var options: [String]
+    
+    @State var showDropdown = false
+    
+    @SceneStorage("drop_down_zindex") private var index = 1000.0
+    @State var zindex = 1000.0
+    
+    var body: some View {
+        GeometryReader {
+            let size = $0.size
+            
+            VStack(spacing: 0) {
+                HStack {
+                    Text(selection == nil ? "Selecione uma opção" : selection!)
+                        .foregroundColor(selection != nil ? .color333030 : .primarycolor)
+                                        
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(.color333030)
+                        .rotationEffect(.degrees((showDropdown ? -180 : 0)))
+                }
+                .padding(.horizontal, 15)
+                .frame(width: 345, height: 44)
+                .background(.white)
+                .contentShape(.rect)
+                .onTapGesture {
+                    index += 1
+                    zindex = index
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        showDropdown.toggle()
+                    }
+                }
+                .zIndex(10)
+                
+                if showDropdown {
+                    OptionsView()
+                }
+            }
+            .clipped()
+            .background(.white)
+            .cornerRadius(10)
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.gray)
+            }
+            .frame(height: size.height)
+        }
+        .frame(height: 50)
+        .zIndex(zindex)
+    }
+    
+    
+    func OptionsView() -> some View {
+        VStack(spacing: 0) {
+            ForEach(options, id: \.self) { option in
+                HStack {
+                    Text(option)
+                    
+                    Image(systemName: "checkmark")
+                        .opacity(selection == option ? 1 : 0)
+                }
+                .foregroundStyle(selection == option ? Color.primarycolor : Color.color333030)
+                .animation(.none, value: selection)
+                .frame(height: 40)
+                .contentShape(.rect)
+                .padding(.horizontal, 15)
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        selection = option
+                        showDropdown.toggle()
+                    }
+                }
+            }
+        }
+        .transition(.move(edge: .top))
+        .zIndex(1)
+    }
 }
 
 #Preview {
     ContentView()
 }
+
