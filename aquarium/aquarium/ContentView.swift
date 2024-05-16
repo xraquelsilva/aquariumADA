@@ -32,139 +32,142 @@ struct ContentView: View {
     
     var body: some View {
         
-        ZStack (alignment: .top){
-            Color.backgroundcolor
-            
-            ZStack {
-                VStack (alignment: .leading, spacing: 12.0) {
-                    
-                    ZStack (alignment: .center) {
+        ZStack {
+            ZStack (alignment: .top)
+            {
+                Color.backgroundcolor
+                
+                ZStack {
+                    VStack (alignment: .leading, spacing: 12.0) {
                         
-                        ZStack(alignment: .center) {
-                            Color(.color254E5C)
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 180)
-                                .clipShape(
-                                    .rect(
-                                        topLeadingRadius: 0,
-                                        bottomLeadingRadius: 50,
-                                        bottomTrailingRadius: 50,
-                                        topTrailingRadius: 0,
-                                        style: .circular
+                        ZStack (alignment: .center) {
+                            
+                            ZStack(alignment: .center) {
+                                Color(.color254E5C)
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 180)
+                                    .clipShape(
+                                        .rect(
+                                            topLeadingRadius: 0,
+                                            bottomLeadingRadius: 50,
+                                            bottomTrailingRadius: 50,
+                                            topTrailingRadius: 0,
+                                            style: .circular
+                                        )
                                     )
-                                )
-                                .shadow(color: Color(red: 0.2, green: 0.19, blue: 0.19).opacity(0.25), radius: 2, x: 0, y: 3)
+                                    .shadow(color: Color(red: 0.2, green: 0.19, blue: 0.19).opacity(0.25), radius: 2, x: 0, y: 3)
+                                
+                            }
+                            
+                            Image(ImageResource.titulo)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 213, height: 117)
                             
                         }
                         
-                        Image(ImageResource.titulo)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 213, height: 117)
-                        
-                    }
-                    
-                    ScrollView {
-                        
-                        VStack (alignment: .leading, spacing: 18.0){
-                            Text("Olá, peixinho!")
-                                .foregroundStyle(.color333030)
-                                .font(.system(size: 24))
-                                .bold()
-                            Text("Esse aplicativo é para te ajudar a reservar tempo para usar com as pessoas que você ama a partir da sua linguagem do amor.")
-                                .foregroundStyle(.color333030)
-                                .font(.system(size: 18))
-                            ZStack {
-                                VStack {
-                                    Button(action: {
-                                        isActive = true
-                                    }, label: {
-                                        Text("Mais sobre linguagem do amor")
-                                            .frame(maxWidth: .infinity)
-                                            //sublinhar esse texto
-                                            
-                                        if isActive {
-                                            CustomDialog(isActive: $isActive, title: "Mais sobre", message: "testando", action: {})
-                                        }
-                                    })
-                                }
-                            }
+                        ScrollView {
                             
-                            
-                            VStack (alignment: .leading, spacing: 8.0){
-                                Text("Qual a sua linguagem do amor?")
-                            }
-                            
-                            DropDownPicker(
-                                selection: $loveLanguageSelect,
-                                options: [
-                                    "Tempo de qualidade",
-                                    "Toque físico",
-                                    "Palavras de afirmação",
-                                    "Presentes",
-                                    "Atos de serviço"
-                                ]
-                            )
-                            .frame(width: 345, height: 50)
-                            .frame(maxWidth: .infinity)
-                            
-                            
-                            VStack (alignment: .leading, spacing: 8.0 ){
-                                Text("Quantas horas você passa acordado no dia?")
-                                Slider(value: $hour, in: 1...23)
-                                    .accentColor(.primarycolor)
-                                    
-                                Text("\(hour, specifier: "%.0f")")
-                            }
-                            
-                            VStack (alignment: .leading, spacing: 8.0){
-                                Text("Quantas horas você gasta com trabalho e/ou estudos?")
-                                TextField("Quantidade de horas gastas nessa atividade", value: $hourWorkStudy, format: .number)
-                            }
-                            
-                            VStack (alignment: .leading, spacing: 8.0) {
-                                Text("Quantas horas você gasta, em média, nas refeições?")
-                                TextField("Quantidade de horas gastas nas refeições", value: $hourMeals, format: .number)
-                            }
-                            
-                            VStack (alignment: .leading, spacing: 8.0) {
-                                Text("Quantas horas você tem de lazer?")
-                                TextField("Quantidade de horas reservadas para lazer", value: $hourRest, format:
-                                            .number)
-                            }
-                            
-                            VStack (alignment: .leading, spacing: 8.0) {
-                                Text("Quantas horas gasta em locomoção?")
-                                TextField("Quantidade de horas em transporte", value: $hourRest, format: .number)
-                            }
-                            
-//                            VStack (alignment: .leading, spacing: 8.0) {
-//                                  Text("Se alguma atividade não tiver sido incluída, coloque aqui a quantidade de horas que você também usa em atividades diversas")
-//                                TextField("Quantidade de horas também em uso", value: $hourRest, format: .number)}
-                            
-                            Button(action: processFreeTime, label: {
+                            VStack (alignment: .leading, spacing: 18.0){
+                                Text("Olá, peixinho!")
+                                    .foregroundStyle(.color333030)
+                                    .font(.system(size: 24))
+                                    .bold()
+                                Text("Esse aplicativo é para te ajudar a reservar tempo para usar com as pessoas que você ama a partir da sua linguagem do amor.")
+                                    .foregroundStyle(.color333030)
+                                    .font(.system(size: 18))
                                 ZStack {
-                                    Color(.secondarycolor)
-                                    Text("CALCULAR")
-                                        .foregroundStyle(.primarycolor)
-                                        .bold()
+                                    VStack {
+                                        Button(action: {
+                                            isActive = true
+                                        }, label: {
+                                            Text("Mais sobre linguagem do amor")
+                                                .foregroundStyle(.color3E6390)
+                                                .frame(maxWidth: .infinity)
+                                                //sublinhar esse texto
+                                                
+                                            
+                                        })
+                                    }
                                 }
-                                .cornerRadius(10)
-                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-                            })
-                            .frame(width: 345, height: 50)
-                            .frame(maxHeight: 50)
-                            .frame(maxWidth: .infinity)
+                                
+                                
+                                VStack (alignment: .leading, spacing: 8.0){
+                                    Text("Qual a sua linguagem do amor?")
+                                }
+                                
+                                DropDownPicker(
+                                    selection: $loveLanguageSelect,
+                                    options: [
+                                        "Tempo de qualidade",
+                                        "Toque físico",
+                                        "Palavras de afirmação",
+                                        "Presentes",
+                                        "Atos de serviço"
+                                    ]
+                                )
+                                .frame(width: 345, height: 50)
+                                .frame(maxWidth: .infinity)
+                                
+                                
+                                VStack (alignment: .leading, spacing: 8.0 ){
+                                    Text("Quantas horas você passa acordado no dia?")
+                                    Slider(value: $hour, in: 1...23)
+                                        .accentColor(.primarycolor)
+                                        
+                                    Text("\(hour, specifier: "%.0f")")
+                                }
+                                
+                                VStack (alignment: .leading, spacing: 8.0){
+                                    Text("Quantas horas você gasta com trabalho e/ou estudos?")
+                                    TextField("Quantidade de horas gastas nessa atividade", value: $hourWorkStudy, format: .number)
+                                }
+                                
+                                VStack (alignment: .leading, spacing: 8.0) {
+                                    Text("Quantas horas você gasta, em média, nas refeições?")
+                                    TextField("Quantidade de horas gastas nas refeições", value: $hourMeals, format: .number)
+                                }
+                                
+                                VStack (alignment: .leading, spacing: 8.0) {
+                                    Text("Quantas horas você tem de lazer?")
+                                    TextField("Quantidade de horas reservadas para lazer", value: $hourRest, format:
+                                                .number)
+                                }
+                                
+                                VStack (alignment: .leading, spacing: 8.0) {
+                                    Text("Quantas horas gasta em locomoção?")
+                                    TextField("Quantidade de horas em transporte", value: $hourRest, format: .number)
+                                }
+                                
+    //                            VStack (alignment: .leading, spacing: 8.0) {
+    //                                  Text("Se alguma atividade não tiver sido incluída, coloque aqui a quantidade de horas que você também usa em atividades diversas")
+    //                                TextField("Quantidade de horas também em uso", value: $hourRest, format: .number)}
+                                
+                                Button(action: processFreeTime, label: {
+                                    ZStack {
+                                        Color(.secondarycolor)
+                                        Text("CALCULAR")
+                                            .foregroundStyle(.primarycolor)
+                                            .bold()
+                                    }
+                                    .cornerRadius(10)
+                                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                                })
+                                .frame(width: 345, height: 50)
+                                .frame(maxHeight: 50)
+                                .frame(maxWidth: .infinity)
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
+                    .textFieldStyle(.roundedBorder)
+                    .keyboardType(.numberPad)
                 }
-                .textFieldStyle(.roundedBorder)
-                .keyboardType(.numberPad)
-            }
-            
-            
-        } .ignoresSafeArea()
+                
+                
+            } .ignoresSafeArea()
+            CustomDialog(isActive: $isActive, title: "O que é linguagem do amor?", message: "O amor é expressado de formas diferentes e a maneira que você o manifesta é o que chamamos de linguagem do amor.", action: {})
+        }
         
     }
     
