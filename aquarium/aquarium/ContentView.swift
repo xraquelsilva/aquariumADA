@@ -11,7 +11,9 @@ struct ContentView: View {
     
     @State var isActive: Bool = false
     
-    @State var isResult: Bool = false
+    @State var isResultPhysicalTouch: Bool = false
+    
+    @State var isResultWordOfAfirmattion: Bool = false
     
     @State var loveLanguage: String? = nil
     
@@ -146,11 +148,13 @@ struct ContentView: View {
     //                                  Text("Se alguma atividade não tiver sido incluída, coloque aqui a quantidade de horas que você também usa em atividades diversas")
     //                                TextField("Quantidade de horas também em uso", value: $hourRest, format: .number)}
                                 
-                                Button(action: processFreeTime, label: {
+                                Button(action: {
+                                    isResultPhysicalTouch = true}, label: {
                                     ZStack {
                                         Color(.secondarycolor)
                                         Text("CALCULAR")
                                             .foregroundStyle(.primarycolor)
+                                            .font(Font.custom("LilitaOne", size: 24))
                                             .bold()
                                     }
                                     .cornerRadius(10)
@@ -170,13 +174,15 @@ struct ContentView: View {
                 
             } .ignoresSafeArea()
             CustomDialog(isActive: $isActive, title: "O que é linguagem do amor?", message: "O amor é expressado de formas diferentes e a maneira que você o manifesta é o que chamamos de linguagem do amor.", action: {})
+            PhysicalTouch(isResultPhysicalTouch: $isResultPhysicalTouch, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
         }
         
     }
     
-    func processFreeTime() {
-        //calculo em si
-    }
+//    func processFreeTime() {
+//        isResult = true
+//        PhysicalTouch(isResult: $isResult, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
+//    }
     
 }
 

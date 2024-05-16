@@ -1,5 +1,5 @@
 //
-//  PopUpResultFPhysicalTouch.swift
+//  PopUpResultWords.swift
 //  aquarium
 //
 //  Created by Raquel Silva dos Santos on 16/05/24.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PhysicalTouch: View {
+struct WordsOfAfirmattion: View {
     
-    @Binding var isResultPhysicalTouch: Bool
+    @Binding var isResultWordOfAfirmattion: Bool
     
     
     let title: String
@@ -22,7 +22,7 @@ struct PhysicalTouch: View {
     
     var body: some View {
         
-        if isResultPhysicalTouch {
+        if isResultWordOfAfirmattion {
                 ZStack {
                     Color(.black)
                         .opacity(0.5)
@@ -44,8 +44,6 @@ struct PhysicalTouch: View {
                             .frame(width: 204, alignment: .topLeading)
                         
                     }
-//                    .fixedSize(horizontal: false, vertical: true)
-
                     .padding()
                     .frame(width: 361, height: 365)
                     .background(.color254E5C)
@@ -73,14 +71,14 @@ struct PhysicalTouch: View {
                             Spacer()
                             VStack {
                                 Spacer()
-                                Image(ImageResource.corais)
-                                    .frame(width: 218)
+                                Image(ImageResource.estrelinhas)
+                                    .frame(width: 296, height: 201)
                             }
                             .padding()
                         }
                                 }
                                 .shadow(radius: 20)
-//                                .padding()
+                                .padding()
                                 .offset(x: 0, y: offset)
                                 .onAppear{
                                   withAnimation(.default) {
@@ -97,11 +95,11 @@ struct PhysicalTouch: View {
         func close () {
             withAnimation(.spring()) {
                 offset = 1000
-                isResultPhysicalTouch = false
+                isResultWordOfAfirmattion = false
             }
         }
     }
     
     #Preview {
-        PhysicalTouch(isResultPhysicalTouch: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
+        WordsOfAfirmattion(isResultWordOfAfirmattion: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL", action: {})
     }
