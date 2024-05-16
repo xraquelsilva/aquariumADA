@@ -85,11 +85,12 @@ struct CustomDialog: View {
                                       Button {
                                         close()
                                       } label: {
-                                        Image(systemName: "xmark")
+                                        Image(systemName: "xmark.circle.fill")
                                           .font(.title2)
                                           .fontWeight(.medium)
                                       }
-                                      .tint(.black)
+                                      .tint(.secondarycolor)
+                                      .opacity(0.5)
                                       Spacer()
                                     }
                                     .padding()
@@ -104,7 +105,7 @@ struct CustomDialog: View {
                                   }
                                 }
                 }
-//                          .ignoresSafeArea()
+                          .ignoresSafeArea()
                         } else {
                           EmptyView()
                         }

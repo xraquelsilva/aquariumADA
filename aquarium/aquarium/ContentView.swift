@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @State var isActive: Bool = false
     
+    @State var isResult: Bool = false
+    
     @State var loveLanguage: String? = nil
     
     @State var loveLanguageSelect: String? = nil
@@ -29,6 +31,7 @@ struct ContentView: View {
     
     @State var extraHours: Int? = nil
     
+    @State var result: Int? = nil
     
     var body: some View {
         
@@ -71,7 +74,7 @@ struct ContentView: View {
                             VStack (alignment: .leading, spacing: 18.0){
                                 Text("Olá, peixinho!")
                                     .foregroundStyle(.color333030)
-                                    .font(.system(size: 24))
+                                    .font(Font.custom("LilitaOne", size: 24))
                                     .bold()
                                 Text("Esse aplicativo é para te ajudar a reservar tempo para usar com as pessoas que você ama a partir da sua linguagem do amor.")
                                     .foregroundStyle(.color333030)

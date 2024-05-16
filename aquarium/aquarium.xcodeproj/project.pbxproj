@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB2D01A12BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2D01A02BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift */; };
+		EB2D01A92BF6824900DF08DF /* LilitaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB2D01A82BF6824900DF08DF /* LilitaOne-Regular.ttf */; };
 		EB86F2752BF2AE2A002BB9F6 /* aquariumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86F2742BF2AE2A002BB9F6 /* aquariumApp.swift */; };
 		EB86F2772BF2AE2A002BB9F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86F2762BF2AE2A002BB9F6 /* ContentView.swift */; };
 		EB86F2792BF2AE2B002BB9F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB86F2782BF2AE2B002BB9F6 /* Assets.xcassets */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB2D01A02BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpResultFPhysicalTouch.swift; sourceTree = "<group>"; };
+		EB2D01A82BF6824900DF08DF /* LilitaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LilitaOne-Regular.ttf"; path = "../../../../../../Downloads/Lilita_One/LilitaOne-Regular.ttf"; sourceTree = "<group>"; };
+		EB2D01AA2BF6848800DF08DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EB86F2712BF2AE2A002BB9F6 /* aquarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aquarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB86F2742BF2AE2A002BB9F6 /* aquariumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aquariumApp.swift; sourceTree = "<group>"; };
 		EB86F2762BF2AE2A002BB9F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB2D01A62BF6813E00DF08DF /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EB2D01A82BF6824900DF08DF /* LilitaOne-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		EB86F2682BF2AE2A002BB9F6 = {
 			isa = PBXGroup;
 			children = (
@@ -55,10 +68,13 @@
 		EB86F2732BF2AE2A002BB9F6 /* aquarium */ = {
 			isa = PBXGroup;
 			children = (
+				EB2D01AA2BF6848800DF08DF /* Info.plist */,
+				EB2D01A62BF6813E00DF08DF /* fonts */,
 				EB86F2742BF2AE2A002BB9F6 /* aquariumApp.swift */,
 				EB86F2762BF2AE2A002BB9F6 /* ContentView.swift */,
 				EBAE7D292BF5204E00447891 /* loveLanguageSelection.swift */,
 				EBAE7D452BF542FF00447891 /* MoreInfoPopUp.swift */,
+				EB2D01A02BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift */,
 				EB86F2782BF2AE2B002BB9F6 /* Assets.xcassets */,
 				EB86F27A2BF2AE2B002BB9F6 /* Preview Content */,
 			);
@@ -132,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB86F27C2BF2AE2B002BB9F6 /* Preview Assets.xcassets in Resources */,
+				EB2D01A92BF6824900DF08DF /* LilitaOne-Regular.ttf in Resources */,
 				EB86F2792BF2AE2B002BB9F6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +164,7 @@
 				EBAE7D462BF542FF00447891 /* MoreInfoPopUp.swift in Sources */,
 				EB86F2772BF2AE2A002BB9F6 /* ContentView.swift in Sources */,
 				EB86F2752BF2AE2A002BB9F6 /* aquariumApp.swift in Sources */,
+				EB2D01A12BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +300,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"aquarium/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = aquarium/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -310,6 +329,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"aquarium/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = aquarium/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

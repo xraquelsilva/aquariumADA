@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct aquariumApp: App {
+
     var body: some Scene {
         WindowGroup {
             ContentView()
