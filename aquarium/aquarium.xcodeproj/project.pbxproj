@@ -10,6 +10,7 @@
 		EB2D01A12BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2D01A02BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift */; };
 		EB2D01A92BF6824900DF08DF /* LilitaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB2D01A82BF6824900DF08DF /* LilitaOne-Regular.ttf */; };
 		EB2D01AC2BF6973900DF08DF /* PopUpResultWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2D01AB2BF6973900DF08DF /* PopUpResultWords.swift */; };
+		EB2D01AE2BF699F100DF08DF /* PopUpQualityTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2D01AD2BF699F100DF08DF /* PopUpQualityTime.swift */; };
 		EB86F2752BF2AE2A002BB9F6 /* aquariumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86F2742BF2AE2A002BB9F6 /* aquariumApp.swift */; };
 		EB86F2772BF2AE2A002BB9F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86F2762BF2AE2A002BB9F6 /* ContentView.swift */; };
 		EB86F2792BF2AE2B002BB9F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB86F2782BF2AE2B002BB9F6 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		EB2D01A82BF6824900DF08DF /* LilitaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LilitaOne-Regular.ttf"; path = "../../../../../../Downloads/Lilita_One/LilitaOne-Regular.ttf"; sourceTree = "<group>"; };
 		EB2D01AA2BF6848800DF08DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EB2D01AB2BF6973900DF08DF /* PopUpResultWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpResultWords.swift; sourceTree = "<group>"; };
+		EB2D01AD2BF699F100DF08DF /* PopUpQualityTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpQualityTime.swift; sourceTree = "<group>"; };
 		EB86F2712BF2AE2A002BB9F6 /* aquarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aquarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB86F2742BF2AE2A002BB9F6 /* aquariumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aquariumApp.swift; sourceTree = "<group>"; };
 		EB86F2762BF2AE2A002BB9F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				EBAE7D452BF542FF00447891 /* MoreInfoPopUp.swift */,
 				EB2D01A02BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift */,
 				EB2D01AB2BF6973900DF08DF /* PopUpResultWords.swift */,
+				EB2D01AD2BF699F100DF08DF /* PopUpQualityTime.swift */,
 				EB86F2782BF2AE2B002BB9F6 /* Assets.xcassets */,
 				EB86F27A2BF2AE2B002BB9F6 /* Preview Content */,
 			);
@@ -168,6 +171,7 @@
 				EB86F2772BF2AE2A002BB9F6 /* ContentView.swift in Sources */,
 				EB86F2752BF2AE2A002BB9F6 /* aquariumApp.swift in Sources */,
 				EB2D01A12BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift in Sources */,
+				EB2D01AE2BF699F100DF08DF /* PopUpQualityTime.swift in Sources */,
 				EB2D01AC2BF6973900DF08DF /* PopUpResultWords.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

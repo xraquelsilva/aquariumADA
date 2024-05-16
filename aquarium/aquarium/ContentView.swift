@@ -15,6 +15,8 @@ struct ContentView: View {
     
     @State var isResultWordOfAfirmattion: Bool = false
     
+    @State var isResultQualityTime: Bool = false
+    
     @State var loveLanguage: String? = nil
     
     @State var loveLanguageSelect: String? = nil
