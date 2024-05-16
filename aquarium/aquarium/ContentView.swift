@@ -19,6 +19,8 @@ struct ContentView: View {
     
     @State var isResultPresents: Bool = false
     
+    @State var isResultActsOfService: Bool = false
+    
     @State var loveLanguage: String? = nil
     
     @State var loveLanguageSelect: String? = nil
