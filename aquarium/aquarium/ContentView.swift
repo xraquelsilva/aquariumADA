@@ -25,7 +25,7 @@ struct ContentView: View {
     
     @State var loveLanguageSelect: String? = nil
     
-    @State private var hour: Float = 3
+    @State private var hour: Float = 1
     
     @State private var isEditing = false
     
@@ -93,6 +93,7 @@ struct ContentView: View {
                                             isActive = true
                                         }, label: {
                                             Text("Mais sobre linguagem do amor")
+                                                .underline()
                                                 .foregroundStyle(.color3E6390)
                                                 .frame(maxWidth: .infinity)
                                                 //sublinhar esse texto
@@ -121,12 +122,15 @@ struct ContentView: View {
                                 .frame(maxWidth: .infinity)
                                 
                                 
-                                VStack (alignment: .leading, spacing: 8.0 ){
+                                VStack (alignment: .leading, spacing: 5.0 ){
                                     Text("Quantas horas você passa acordado no dia?")
                                     Slider(value: $hour, in: 1...23)
                                         .accentColor(.primarycolor)
                                         
                                     Text("\(hour, specifier: "%.0f")")
+                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .foregroundColor(.primarycolor)
+                                        .font(Font.custom("LibreFranklin", size: 16))
                                 }
                                 
                                 VStack (alignment: .leading, spacing: 8.0){
@@ -149,10 +153,6 @@ struct ContentView: View {
                                     Text("Quantas horas gasta em locomoção?")
                                     TextField("Quantidade de horas em transporte", value: $hourRest, format: .number)
                                 }
-                                
-    //                            VStack (alignment: .leading, spacing: 8.0) {
-    //                                  Text("Se alguma atividade não tiver sido incluída, coloque aqui a quantidade de horas que você também usa em atividades diversas")
-    //                                TextField("Quantidade de horas também em uso", value: $hourRest, format: .number)}
                                 
                                 Button(action: {
                                     isResultPhysicalTouch = true}, label: {
@@ -209,7 +209,7 @@ struct DropDownPicker: View {
             VStack(spacing: 0) {
                 HStack {
                     Text(selection == nil ? "Selecione uma opção" : selection!)
-                        .foregroundColor(selection != nil ? .color333030 : .primarycolor)
+                        .foregroundColor(selection != nil ? .primarycolor : .color333030)
                                         
                     Image(systemName: "chevron.down")
                         .foregroundColor(.color333030)
@@ -237,7 +237,8 @@ struct DropDownPicker: View {
             .cornerRadius(10)
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(.gray)
+                    .stroke(.color333030)
+                    .opacity(0.2)
             }
             .frame(height: size.height)
         }
@@ -254,8 +255,9 @@ struct DropDownPicker: View {
                     
                     Image(systemName: "checkmark")
                         .opacity(selection == option ? 1 : 0)
+                        .foregroundStyle(.colorF2412F)
                 }
-                .foregroundStyle(selection == option ? Color.primarycolor : Color.color333030)
+                .foregroundStyle(selection == option ? Color.colorF2412F : Color.primarycolor)
                 .animation(.none, value: selection)
                 .frame(height: 40)
                 .contentShape(.rect)
