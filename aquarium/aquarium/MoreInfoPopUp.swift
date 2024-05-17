@@ -28,45 +28,49 @@ struct CustomDialog: View {
                         .onTapGesture {
                             close()
                         }
+                    
                     VStack (alignment: .leading, spacing: 8.0)  {
-                        
-                        Text(title)
-                            .padding()
-                            .foregroundStyle(.secondarycolor)
-                            .font(.system(size: 32))
+                            Text(title)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .foregroundStyle(.secondarycolor)
+                                .font(Font.custom("LilitaOne", size: 32))
+                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(.system(size: 20))
+                            .font(Font.custom("LibreFranklin", size: 24))
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
 
                         Text("E elas são divididas em cinco:")
                             .foregroundStyle(.secondarycolor)
-                            .font(.system(size: 20))
+                            .font(Font.custom("LibreFranklin", size: 24))
                         
                         VStack (alignment: .leading, spacing: 12) {
                             Text("1. Palavras de afirmação: demonstração de afeto por meio de elogios . Você ama declaraçãozinhas!")
                                 .foregroundStyle(.secondarycolor)
-                                .font(.system(size: 18))
+                                .font(Font.custom("LibreFranklin", size: 18))
+                            
                             
                             
                             Text("2. Toque físico: o carinho é demonstrado por meio de abraços e gestos. Você gosta de ficar agarradinho!")
                                 .foregroundStyle(.secondarycolor)
-                                .font(.system(size: 18))
+                                .font(Font.custom("LibreFranklin", size: 18))
                             
                             
                             Text("3. Tempo de qualidade: o amor é convertido em tempos exclusivos com as pessoas que amamos. Você ama passar tempo juntinho!")
                                 .foregroundStyle(.secondarycolor)
-                                .font(.system(size: 18))
+                                .font(Font.custom("LibreFranklin", size: 18))
                             
                             
                             Text("4. Atos de serviço: ações são muito valiosas, representando momentos de ajuda. Você ama dar forcinha!")
                                 .foregroundStyle(.secondarycolor)
-                                .font(.system(size: 18))
+                                .font(Font.custom("LibreFranklin", size: 18))
                             
                             
                             Text("5. Presentes: o amor é revelado por meio de presentes. Você ama dar lembrancinhas!")
                                 .foregroundStyle(.secondarycolor)
-                                .font(.system(size: 18))
+                                .font(Font.custom("LibreFranklin", size: 18))
                             
                         }
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -97,7 +101,6 @@ struct CustomDialog: View {
                                   }
                                 }
                                 .shadow(radius: 20)
-//                                .padding()
                                 .offset(x: 0, y: offset)
                                 .onAppear{
                                   withAnimation(.default) {
