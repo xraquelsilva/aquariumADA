@@ -11,7 +11,6 @@ struct QualityTime: View {
     
     @Binding var isResultQualityTime: Bool
     
-    
     let title: String
     let message: String
     
@@ -29,20 +28,20 @@ struct QualityTime: View {
                         .onTapGesture {
                             close()
                         }
-                    VStack (alignment: .leading, spacing: 17.0)  {
+                    VStack (alignment: .leading, spacing: 4.0)  {
                         
-                        HStack {
-                            Text(title)
-                                .padding()
-                                .foregroundStyle(.secondarycolor)
-                                .font(Font.custom("LilitaOne", size: 32))
-                                .frame(width: 270, alignment: .topLeading)
-                        }
+                        Text(title)
+                            .foregroundStyle(.secondarycolor)
+                            .font(Font.custom("LilitaOne", size: 32))
+                            .frame(width: 276, alignment: .topLeading)
+                            .padding()
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(.system(size: 20))
-                            .frame(width: 204, alignment: .topLeading)
+                            .font(Font.custom("LibreFranklin", size: 20))
+                            .frame(width: 264, alignment: .topLeading)
+                            .padding(.leading)
+                        Spacer()
                         
                     }
                     .padding()

@@ -29,21 +29,19 @@ struct ActsOfService: View {
                         .onTapGesture {
                             close()
                         }
-                    VStack (alignment: .leading, spacing: 17.0)  {
-                        
-                        HStack {
-                            Text(title)
-                                .padding()
-                                .foregroundStyle(.secondarycolor)
-                                .font(Font.custom("LilitaOne", size: 32))
-                                .frame(width: 270, alignment: .topLeading)
-                        }
+                    VStack (alignment: .leading, spacing: 4.0)  {
+                        Text(title)
+                            .foregroundStyle(.secondarycolor)
+                            .font(Font.custom("LilitaOne", size: 32))
+                            .frame(width: 276, alignment: .topLeading)
+                            .padding()
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(.system(size: 20))
-                            .frame(width: 204, alignment: .topLeading)
-                        
+                            .font(Font.custom("LibreFranklin", size: 20))
+                            .frame(width: 288, alignment: .topLeading)
+                            .padding(.leading)
+                        Spacer()
                     }
                     .padding()
                     .frame(width: 361, height: 365)
@@ -73,7 +71,8 @@ struct ActsOfService: View {
                             VStack {
                                 Spacer()
                                 Image(ImageResource.cavalinhosmarinhos)
-                                    .frame(width: 263, height: 138)
+                                    .frame(width: 163, height: 138)
+                                    .padding(.all)
                             }
                             .padding()
                         }

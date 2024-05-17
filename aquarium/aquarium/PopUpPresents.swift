@@ -29,20 +29,21 @@ struct Presents: View {
                         .onTapGesture {
                             close()
                         }
-                    VStack (alignment: .leading, spacing: 17.0)  {
+                    VStack (alignment: .leading, spacing: 4.0)  {
                         
-                        HStack {
-                            Text(title)
-                                .padding()
-                                .foregroundStyle(.secondarycolor)
-                                .font(Font.custom("LilitaOne", size: 32))
-                                .frame(width: 270, alignment: .topLeading)
-                        }
+                        Text(title)
+//                            .padding()
+                            .foregroundStyle(.secondarycolor)
+                            .font(Font.custom("LilitaOne", size: 32))
+                            .frame(width: 276, alignment: .topLeading)
+                            .padding()
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(.system(size: 20))
+                            .font(Font.custom("LibreFranklin", size: 20))
                             .frame(width: 204, alignment: .topLeading)
+                            .padding(.leading)
+                        Spacer()
                         
                     }
                     .padding()

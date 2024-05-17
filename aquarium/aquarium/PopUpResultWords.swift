@@ -29,20 +29,20 @@ struct WordsOfAfirmattion: View {
                         .onTapGesture {
                             close()
                         }
-                    VStack (alignment: .leading, spacing: 17.0)  {
+                    VStack (alignment: .leading, spacing: 4.0)  {
                         
                         Text(title)
-                            .padding()
                             .foregroundStyle(.secondarycolor)
                             .font(Font.custom("LilitaOne", size: 32))
-                            .frame(width: 270, alignment: .topLeading)
+                            .frame(width: 276, alignment: .topLeading)
                             .padding()
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(.system(size: 20))
-                            .frame(width: 204, alignment: .topLeading)
-                        
+                            .font(Font.custom("LibreFranklin", size: 20))
+                            .frame(width: 178, alignment: .topLeading)
+                            .padding(.leading)
+                        Spacer()
                     }
                     .padding()
                     .frame(width: 361, height: 365)
@@ -72,9 +72,9 @@ struct WordsOfAfirmattion: View {
                             VStack {
                                 Spacer()
                                 Image(ImageResource.estrelinhas)
-                                    .frame(width: 296, height: 201)
+                                    .frame(width: 196, height: 201)
+                                    .padding(.all)
                             }
-                            .padding()
                         }
                                 }
                                 .shadow(radius: 20)
@@ -101,5 +101,5 @@ struct WordsOfAfirmattion: View {
     }
     
     #Preview {
-        WordsOfAfirmattion(isResultWordOfAfirmattion: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL", action: {})
+        WordsOfAfirmattion(isResultWordOfAfirmattion: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
     }

@@ -15,7 +15,6 @@ struct PhysicalTouch: View {
     let title: String
     let message: String
     
-    
     let action: () -> ()
     
     @State private var offset: CGFloat = 1000
@@ -29,21 +28,23 @@ struct PhysicalTouch: View {
                         .onTapGesture {
                             close()
                         }
-                    VStack (alignment: .leading, spacing: 17.0)  {
+                    VStack (alignment: .leading, spacing: 4.0)  {
                         
                         Text(title)
-                            .padding()
                             .foregroundStyle(.secondarycolor)
                             .font(Font.custom("LilitaOne", size: 32))
-                            .frame(width: 270, alignment: .topLeading)
+                            .frame(width: 276, alignment: .topLeading)
                             .padding()
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(.system(size: 20))
-                            .frame(width: 204, alignment: .topLeading)
+                            .font(Font.custom("LibreFranklin", size: 20))
+                            .frame(width: 178, alignment: .topLeading)
+                            .padding(.leading)
+                        Spacer()
                         
                     }
+                    
 //                    .fixedSize(horizontal: false, vertical: true)
 
                     .padding()
@@ -76,11 +77,11 @@ struct PhysicalTouch: View {
                                 Image(ImageResource.corais)
                                     .frame(width: 218)
                             }
-                            .padding()
+                            .padding(.horizontal)
                         }
                                 }
                                 .shadow(radius: 20)
-//                                .padding()
+                                
                                 .offset(x: 0, y: offset)
                                 .onAppear{
                                   withAnimation(.default) {
