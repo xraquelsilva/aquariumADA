@@ -130,7 +130,7 @@ struct ContentView: View {
                                     Text("\(hour, specifier: "%.0f")")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                                         .foregroundColor(.primarycolor)
-                                        .font(Font.custom("LibreFranklin", size: 16))
+                                        .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
                                 VStack (alignment: .leading, spacing: 8.0){
@@ -151,15 +151,15 @@ struct ContentView: View {
                                 
                                 VStack (alignment: .leading, spacing: 8.0) {
                                     Text("Quantas horas gasta em locomoção?")
-                                    TextField("Quantidade de horas em transporte", value: $hourRest, format: .number)
+                                    TextField("Quantidade de horas em transporte", value: $hourTransport, format: .number)
                                 }
                                 
                                 Button(action: {
                                     isResultPhysicalTouch = true}, label: {
                                     ZStack {
-                                        Color(.secondarycolor)
+                                        Color(.primarycolor)
                                         Text("CALCULAR")
-                                            .foregroundStyle(.primarycolor)
+                                            .foregroundStyle(.secondarycolor)
                                             .font(Font.custom("LilitaOne", size: 24))
                                             .bold()
                                     }
@@ -176,11 +176,15 @@ struct ContentView: View {
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.numberPad)
                 }
-                
+                .scrollDismissesKeyboard(.immediately)
                 
             } .ignoresSafeArea()
-            CustomDialog(isActive: $isActive, title: "O que é linguagem do amor?", message: "O amor é expressado de formas diferentes e a maneira que você o manifesta é o que chamamos de linguagem do amor.", action: {})
+            MoreInfoPopUp(isActive: $isActive, title: "O que é linguagem do amor?", message: "O amor é expressado de formas diferentes e a maneira que você o manifesta é o que chamamos de linguagem do amor.", action: {})
             PhysicalTouch(isResultPhysicalTouch: $isResultPhysicalTouch, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
+            WordsOfAfirmattion(isResultWordOfAfirmattion: $isResultWordOfAfirmattion, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
+            QualityTime(isResultQualityTime: $isResultQualityTime, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PASSAR TEMPO COM UM AMIGO HOJE", action: {})
+            Presents(isResultPresents: $isResultPresents, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PRESENTAR UM AMIGO HOJE!", action: {})
+            ActsOfService(isResultActsOfService: $isResultActsOfService, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE AJUDAR UM AMIGO HOJE!", action: {})
         }
         
     }

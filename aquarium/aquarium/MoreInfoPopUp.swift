@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomDialog: View {
+struct MoreInfoPopUp: View {
     
     @Binding var isActive: Bool
     
@@ -39,12 +39,12 @@ struct CustomDialog: View {
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(Font.custom("LibreFranklin", size: 24))
-                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                            .font(Font.custom("LibreFranklin", size: 20))
+
 
                         Text("E elas são divididas em cinco:")
                             .foregroundStyle(.secondarycolor)
-                            .font(Font.custom("LibreFranklin", size: 24))
+                            .font(Font.custom("LibreFranklin", size: 20))
                         
                         VStack (alignment: .leading, spacing: 12) {
                             Text("1. Palavras de afirmação: demonstração de afeto por meio de elogios . Você ama declaraçãozinhas!")
@@ -78,7 +78,7 @@ struct CustomDialog: View {
                     }
 //                    .fixedSize(horizontal: false, vertical: true)
                     .padding()
-                    .frame(width: 365, height: 736)
+                    .frame(width: 365, height: 670)
                     .background(.color3E6390)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .overlay {
@@ -123,6 +123,6 @@ struct CustomDialog: View {
     }
     
     #Preview {
-        CustomDialog(isActive: .constant(true), title: "O que é linguagem do amor?", message: "O amor é expressado de formas diferentes e a maneira que você o manifesta é o que chamamos de linguagem do amor.", action: {})
+        MoreInfoPopUp(isActive: .constant(true), title: "O que é linguagem do amor?", message: "O amor é expressado de formas diferentes e a maneira que você o manifesta é o que chamamos de linguagem do amor.", action: {})
     }
 
