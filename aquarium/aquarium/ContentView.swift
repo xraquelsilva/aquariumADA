@@ -84,7 +84,7 @@ struct ContentView: View {
                                     .foregroundStyle(.color333030)
                                     .font(Font.custom("LilitaOne", size: 24))
                                     .bold()
-                                Text("Esse aplicativo é para te ajudar a reservar tempo para usar com as pessoas que você ama a partir da sua linguagem do amor.")
+                                Text("Esse aplicativo é para te ajudar a reservar tempo para usar com as pessoas que você ama a partir da sua linguagem do amor. Afinal, vivemos em um grande aquário com a nossa rede de apoio.")
                                     .foregroundStyle(.color333030)
                                     .font(.system(size: 18))
                                 ZStack {
