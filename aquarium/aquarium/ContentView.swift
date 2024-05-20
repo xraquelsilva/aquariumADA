@@ -108,6 +108,7 @@ struct ContentView: View {
                                 
                                 VStack (alignment: .leading, spacing: 8.0){
                                     Text("Qual a sua linguagem do amor?")
+                                        .font(.system(size: 18))
                                 }
                                 
                                 DropDownPicker(
@@ -118,20 +119,31 @@ struct ContentView: View {
                                 .frame(maxWidth: .infinity)
                                 
                                 
-                                VStack (alignment: .leading, spacing: 5.0 ){
+                                VStack(alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você dorme por dia?")
-                                    Slider(value: $hoursSleep, in: 5...18)
-                                        .accentColor(.primarycolor)
-                                        .padding(.horizontal)
-                                        
+                                        .font(.system(size: 18))
+                                    Slider(
+                                        value: $hoursSleep,
+                                        in: 5...15,
+                                        step: 1
+                                    ) {
+                                        Text("Horas de sono")
+                                    } minimumValueLabel: {
+                                        Text("5")
+                                    } maximumValueLabel: {
+                                        Text("15")
+                                    }
+                                    .accentColor(.primarycolor)
+                                    .padding(.horizontal)
                                     Text("\(hoursSleep, specifier: "%.0f")")
-                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .frame(maxWidth: .infinity)
                                         .foregroundColor(.primarycolor)
                                         .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
                                 VStack (alignment: .leading, spacing: 5.0){
                                     Text("Quantas horas você gasta com trabalho e/ou estudos?")
+                                        .font(.system(size: 18))
                                     Slider(value: $hourWorkStudy, in: 1...8)
                                         .accentColor(.primarycolor)
                                         .padding(.horizontal)
@@ -144,6 +156,7 @@ struct ContentView: View {
                                 
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você gasta, em média, nas refeições?")
+                                        .font(.system(size: 18))
                                     Slider(value: $hourMeals, in: 1...8)
                                         .accentColor(.primarycolor)
                                         .padding(.horizontal)
@@ -156,6 +169,7 @@ struct ContentView: View {
                                 
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você tem de lazer?")
+                                        .font(.system(size: 18))
                                     Slider(value: $hourRest, in: 1...8)
                                         .accentColor(.primarycolor)
                                         .padding(.horizontal)
@@ -168,7 +182,8 @@ struct ContentView: View {
                                 
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas gasta em locomoção?")
-                                    Slider(value: $hourTransport, in: 1...8)
+                                        .font(.system(size: 18))
+                                    Slider(value: $hourTransport, in: 0...8)
                                         .accentColor(.primarycolor)
                                         .padding(.horizontal)
                                     
