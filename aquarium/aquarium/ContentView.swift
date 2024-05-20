@@ -25,17 +25,17 @@ struct ContentView: View {
     
     @State var loveLanguageSelect: String? = nil
     
-    @State private var hoursSleep: Float = 5
+    @State private var hoursSleep: Float = 8
     
     @State private var isEditing = false
     
-    @State var hourWorkStudy: Int? = nil
+    @State var hourWorkStudy: Float = 2
     
-    @State var hourMeals: Int? = nil
+    @State var hourMeals: Float = 2
     
-    @State var hourRest: Int? = nil
+    @State var hourRest: Float = 2
     
-    @State var hourTransport: Int? = nil
+    @State var hourTransport: Float = 2
     
     @State var result: Double? = nil
     
@@ -100,8 +100,6 @@ struct ContentView: View {
                                                 .underline()
                                                 .foregroundStyle(.color3E6390)
                                                 .frame(maxWidth: .infinity)
-                                                //sublinhar esse texto
-                                                
                                             
                                         })
                                     }
@@ -124,6 +122,7 @@ struct ContentView: View {
                                     Text("Quantas horas você dorme por dia?")
                                     Slider(value: $hoursSleep, in: 5...18)
                                         .accentColor(.primarycolor)
+                                        .padding(.horizontal)
                                         
                                     Text("\(hoursSleep, specifier: "%.0f")")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -131,25 +130,52 @@ struct ContentView: View {
                                         .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
-                                VStack (alignment: .leading, spacing: 8.0){
+                                VStack (alignment: .leading, spacing: 5.0){
                                     Text("Quantas horas você gasta com trabalho e/ou estudos?")
-                                    TextField("Quantidade de horas gastas nessa atividade", value: $hourWorkStudy, format: .number)
+                                    Slider(value: $hourWorkStudy, in: 1...8)
+                                        .accentColor(.primarycolor)
+                                        .padding(.horizontal)
+                                    
+                                    Text("\(hourWorkStudy, specifier: "%.0f")")
+                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .foregroundColor(.primarycolor)
+                                        .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
-                                VStack (alignment: .leading, spacing: 8.0) {
+                                VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você gasta, em média, nas refeições?")
-                                    TextField("Quantidade de horas gastas nas refeições", value: $hourMeals, format: .number)
+                                    Slider(value: $hourMeals, in: 1...8)
+                                        .accentColor(.primarycolor)
+                                        .padding(.horizontal)
+                                    
+                                    Text("\(hourMeals, specifier: "%.0f")")
+                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .foregroundColor(.primarycolor)
+                                        .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
-                                VStack (alignment: .leading, spacing: 8.0) {
+                                VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você tem de lazer?")
-                                    TextField("Quantidade de horas reservadas para lazer", value: $hourRest, format:
-                                                .number)
+                                    Slider(value: $hourRest, in: 1...8)
+                                        .accentColor(.primarycolor)
+                                        .padding(.horizontal)
+                                    
+                                    Text("\(hourRest, specifier: "%.0f")")
+                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .foregroundColor(.primarycolor)
+                                        .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
-                                VStack (alignment: .leading, spacing: 8.0) {
+                                VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas gasta em locomoção?")
-                                    TextField("Quantidade de horas em transporte", value: $hourTransport, format: .number)
+                                    Slider(value: $hourTransport, in: 1...8)
+                                        .accentColor(.primarycolor)
+                                        .padding(.horizontal)
+                                    
+                                    Text("\(hourTransport, specifier: "%.0f")")
+                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .foregroundColor(.primarycolor)
+                                        .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
                                 Button(action: {
@@ -210,27 +236,16 @@ struct ContentView: View {
         
     }
     
-    func processFreeTime(for loveLanguageSelec: String?) -> Double {
-        let totalHours: Double = Double(24 - hoursSleep)
-        var sumAtiv: Double = 0
+    func processFreeTime(for loveLanguageSelec: String?) -> Float {
+        let totalHours: Float = Float(24 - hoursSleep)
+        var sumAtiv: Float = 0
         
-        if let hourWorkStudy = hourWorkStudy {
-            sumAtiv += Double(hourWorkStudy)
-        }
-        if let hourTransport = hourTransport {
-            sumAtiv += Double(hourTransport)
-        }
-        if let hourMeals = hourMeals {
-            sumAtiv += Double(hourMeals)
-        }
-        if let hourRest = hourRest {
-            sumAtiv += Double(hourRest)
-        }
-        
+        sumAtiv = hourWorkStudy + hourTransport + hourMeals + hourRest
+            
         let freeTime = totalHours - sumAtiv
         let freeTimePorc = (freeTime / totalHours) * 100 //em porcentagem
 
-        result = freeTimePorc
+        result = Double(freeTimePorc)
 
         
         if let loveLanguage = loveLanguageSelec {
