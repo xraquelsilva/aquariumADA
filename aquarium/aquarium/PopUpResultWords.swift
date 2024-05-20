@@ -39,8 +39,8 @@ struct WordsOfAfirmattion: View {
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(Font.custom("LibreFranklin", size: 20))
-                            .frame(width: 178, alignment: .topLeading)
+                            .font(Font.custom("LibreFranklin", size: 16))
+                            .frame(width: 135, alignment: .topLeading)
                             .padding(.leading)
                         Spacer()
                     }
@@ -73,7 +73,8 @@ struct WordsOfAfirmattion: View {
                                 Spacer()
                                 Image(ImageResource.estrelinhas)
                                     .frame(width: 196, height: 201)
-                                    .padding(.all)
+                                    .padding(.vertical)
+                                    .padding()
                             }
                         }
                                 }
@@ -101,5 +102,5 @@ struct WordsOfAfirmattion: View {
     }
     
     #Preview {
-        WordsOfAfirmattion(isResultWordOfAfirmattion: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
+        WordsOfAfirmattion(isResultWordOfAfirmattion: .constant(true), title: "VOCÊ TEM X.XX% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
     }

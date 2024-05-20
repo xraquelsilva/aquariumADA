@@ -40,8 +40,8 @@ struct Presents: View {
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(Font.custom("LibreFranklin", size: 20))
-                            .frame(width: 204, alignment: .topLeading)
+                            .font(Font.custom("LibreFranklin", size: 16))
+                            .frame(width: 180, alignment: .topLeading)
                             .padding(.leading)
                         Spacer()
                         
@@ -103,7 +103,7 @@ struct Presents: View {
     }
     
     #Preview {
-        Presents(isResultPresents: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PRESENTAR UM AMIGO HOJE!", action: {})
+        Presents(isResultPresents: .constant(true), title: "VOCÊ TEM X.XX% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PRESENTAR UM AMIGO HOJE!", action: {})
     }
 
 

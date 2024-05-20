@@ -38,8 +38,8 @@ struct ActsOfService: View {
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(Font.custom("LibreFranklin", size: 20))
-                            .frame(width: 288, alignment: .topLeading)
+                            .font(Font.custom("LibreFranklin", size: 16))
+                            .frame(width: 110, alignment: .topLeading)
                             .padding(.leading)
                         Spacer()
                     }
@@ -101,7 +101,7 @@ struct ActsOfService: View {
     }
     
     #Preview {
-        ActsOfService(isResultActsOfService: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE AJUDAR UM AMIGO HOJE!", action: {})
+        ActsOfService(isResultActsOfService: .constant(true), title: "VOCÊ TEM X.XX% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE AJUDAR UM AMIGO HOJE!", action: {})
     }
 
 

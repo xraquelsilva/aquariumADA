@@ -38,7 +38,7 @@ struct QualityTime: View {
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(Font.custom("LibreFranklin", size: 20))
+                            .font(Font.custom("LibreFranklin", size: 16))
                             .frame(width: 264, alignment: .topLeading)
                             .padding(.leading)
                         Spacer()
@@ -101,6 +101,6 @@ struct QualityTime: View {
     }
     
     #Preview {
-        QualityTime(isResultQualityTime: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PASSAR TEMPO COM UM AMIGO HOJE", action: {})
+        QualityTime(isResultQualityTime: .constant(true), title: "VOCÊ TEM X.XX% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PASSAR TEMPO COM UM AMIGO HOJE!", action: {})
     }
 

@@ -38,8 +38,8 @@ struct PhysicalTouch: View {
                         
                         Text(message)
                             .foregroundStyle(.secondarycolor)
-                            .font(Font.custom("LibreFranklin", size: 20))
-                            .frame(width: 178, alignment: .topLeading)
+                            .font(Font.custom("LibreFranklin", size: 16))
+                            .frame(width: 210, alignment: .topLeading)
                             .padding(.leading)
                         Spacer()
                         
@@ -75,9 +75,10 @@ struct PhysicalTouch: View {
                             VStack {
                                 Spacer()
                                 Image(ImageResource.corais)
-                                    .frame(width: 218)
+                                    .frame(width: 200)
                             }
                             .padding(.horizontal)
+                            .padding()
                         }
                                 }
                                 .shadow(radius: 20)
@@ -104,5 +105,5 @@ struct PhysicalTouch: View {
     }
     
     #Preview {
-        PhysicalTouch(isResultPhysicalTouch: .constant(true), title: "", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
+        PhysicalTouch(isResultPhysicalTouch: .constant(true), title: "VOCÊ TEM X.XX% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
     }
