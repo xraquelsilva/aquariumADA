@@ -104,5 +104,5 @@ struct PhysicalTouch: View {
     }
     
     #Preview {
-        PhysicalTouch(isResultPhysicalTouch: .constant(true), title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
+        PhysicalTouch(isResultPhysicalTouch: .constant(true), title: "", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
     }

@@ -25,7 +25,7 @@ struct ContentView: View {
     
     @State var loveLanguageSelect: String? = nil
     
-    @State private var hour: Float = 1
+    @State private var hoursSleep: Float = 5
     
     @State private var isEditing = false
     
@@ -37,9 +37,7 @@ struct ContentView: View {
     
     @State var hourTransport: Int? = nil
     
-    @State var extraHours: Int? = nil
-    
-    @State var result: Int? = nil
+    @State var result: Double? = nil
     
     var body: some View {
         
@@ -123,11 +121,11 @@ struct ContentView: View {
                                 
                                 
                                 VStack (alignment: .leading, spacing: 5.0 ){
-                                    Text("Quantas horas você passa acordado no dia?")
-                                    Slider(value: $hour, in: 1...23)
+                                    Text("Quantas horas você dorme por dia?")
+                                    Slider(value: $hoursSleep, in: 5...18)
                                         .accentColor(.primarycolor)
                                         
-                                    Text("\(hour, specifier: "%.0f")")
+                                    Text("\(hoursSleep, specifier: "%.0f")")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                                         .foregroundColor(.primarycolor)
                                         .font(Font.custom("LibreFranklin", size: 18))
@@ -155,7 +153,7 @@ struct ContentView: View {
                                 }
                                 
                                 Button(action: {
-                                    isResultPhysicalTouch = true}, label: {
+                                    let porcentagemHorasLivres = processFreeTime() }, label: {
                                     ZStack {
                                         Color(.primarycolor)
                                         Text("CALCULAR")
@@ -179,8 +177,11 @@ struct ContentView: View {
                 .scrollDismissesKeyboard(.immediately)
                 
             } .ignoresSafeArea()
+            
             MoreInfoPopUp(isActive: $isActive, title: "O que é linguagem do amor?", message: "O amor é expressado de formas diferentes e a maneira que você o manifesta é o que chamamos de linguagem do amor.", action: {})
-            PhysicalTouch(isResultPhysicalTouch: $isResultPhysicalTouch, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
+            if isResultPhysicalTouch {
+                            PhysicalTouch(isResultPhysicalTouch: $isResultPhysicalTouch, title: "VOCÊ TEM \(result ?? 0)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
+                        }
             WordsOfAfirmattion(isResultWordOfAfirmattion: $isResultWordOfAfirmattion, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
             QualityTime(isResultQualityTime: $isResultQualityTime, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PASSAR TEMPO COM UM AMIGO HOJE", action: {})
             Presents(isResultPresents: $isResultPresents, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PRESENTAR UM AMIGO HOJE!", action: {})
@@ -189,12 +190,35 @@ struct ContentView: View {
         
     }
     
-//    func processFreeTime() {
-//        isResult = true
-//        PhysicalTouch(isResult: $isResult, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
-//    }
+    func processFreeTime() -> Double {
+        let totalHours: Double = Double(24 - hoursSleep)
+        var somaAtividades: Double = 0
+        
+        isResultPhysicalTouch = true
+
+        if let hourWorkStudy = hourWorkStudy {
+            somaAtividades += Double(hourWorkStudy)
+        }
+        if let hourTransport = hourTransport {
+            somaAtividades += Double(hourTransport)
+        }
+        if let hourMeals = hourMeals {
+            somaAtividades += Double(hourMeals)
+        }
+        if let hourRest = hourRest {
+            somaAtividades += Double(hourRest)
+        }
+        
+        let horasLivres = totalHours - somaAtividades
+        let porcentagemHorasLivres = (horasLivres / totalHours) * 100
+
+        result = porcentagemHorasLivres
+        
+        return porcentagemHorasLivres
+    }
+
+    }
     
-}
 
 struct DropDownPicker: View {
     
