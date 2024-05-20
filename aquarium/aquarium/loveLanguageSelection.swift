@@ -7,9 +7,17 @@
 
 import Foundation
 
-enum loveLanguage: String, CaseIterable {
+enum loveLanguage: String {
     case top
     case bottom
     
     
+}
+
+enum loveLanguageOptions: String, CaseIterable {
+    case physicalTouch = "Toque físico"
+    case qualityTime = "Tempo de qualidade"
+    case presents = "Presentes"
+    case actsOfService = "Atos de serviço"
+    case wordsOfAffirmation = "Palavras de afirmação"
 }

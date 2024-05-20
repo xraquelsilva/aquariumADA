@@ -39,6 +39,12 @@ struct ContentView: View {
     
     @State var result: Double? = nil
     
+    
+    @State var inputFailed = false
+    
+    
+    let tituloAlerta = "O seu dia está ultrapassando o limite de 24 horas"
+    
     var body: some View {
         
         ZStack {
@@ -107,15 +113,9 @@ struct ContentView: View {
                                 }
                                 
                                 DropDownPicker(
-                                    selection: $loveLanguageSelect,
-                                    options: [
-                                        "Tempo de qualidade",
-                                        "Toque físico",
-                                        "Palavras de afirmação",
-                                        "Presentes",
-                                        "Atos de serviço"
-                                    ]
-                                )
+                                                selection: $loveLanguageSelect,
+                                                options: loveLanguageOptions.allCases.map { $0.rawValue }
+                                            )
                                 .frame(width: 345, height: 50)
                                 .frame(maxWidth: .infinity)
                                 
@@ -153,7 +153,7 @@ struct ContentView: View {
                                 }
                                 
                                 Button(action: {
-                                    let porcentagemHorasLivres = processFreeTime() }, label: {
+                                    _ = processFreeTime(for: loveLanguageSelect) }, label: {
                                     ZStack {
                                         Color(.primarycolor)
                                         Text("CALCULAR")
@@ -175,46 +175,113 @@ struct ContentView: View {
                     .keyboardType(.numberPad)
                 }
                 .scrollDismissesKeyboard(.immediately)
+                .alert(tituloAlerta, isPresented: $inputFailed) {
+                    Button("OK", role: .cancel, action: {})
+                    }
                 
             } .ignoresSafeArea()
             
+            let resultFormatted = String(format: "%.1f", result ?? 0)
+            
             MoreInfoPopUp(isActive: $isActive, title: "O que é linguagem do amor?", message: "O amor é expressado de formas diferentes e a maneira que você o manifesta é o que chamamos de linguagem do amor.", action: {})
+            
             if isResultPhysicalTouch {
-                            PhysicalTouch(isResultPhysicalTouch: $isResultPhysicalTouch, title: "VOCÊ TEM \(result ?? 0)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
-                        }
-            WordsOfAfirmattion(isResultWordOfAfirmattion: $isResultWordOfAfirmattion, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
-            QualityTime(isResultQualityTime: $isResultQualityTime, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PASSAR TEMPO COM UM AMIGO HOJE", action: {})
-            Presents(isResultPresents: $isResultPresents, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PRESENTAR UM AMIGO HOJE!", action: {})
-            ActsOfService(isResultActsOfService: $isResultActsOfService, title: "VOCÊ TEM X% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE AJUDAR UM AMIGO HOJE!", action: {})
+                PhysicalTouch(isResultPhysicalTouch: $isResultPhysicalTouch, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE ABRAÇAR UM AMIGO HOJE!", action: {})
+            }
+            
+            if isResultPresents {
+                Presents(isResultPresents: $isResultPresents, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PRESENTAR UM AMIGO HOJE!", action: {})
+            }
+            
+            if isResultQualityTime {
+                QualityTime(isResultQualityTime: $isResultQualityTime, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE PASSAR TEMPO COM UM AMIGO HOJE", action: {})
+            }
+            
+            if isResultActsOfService {
+                ActsOfService(isResultActsOfService: $isResultActsOfService, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE AJUDAR UM AMIGO HOJE!", action: {})
+            }
+            
+            if isResultWordOfAfirmattion {
+                WordsOfAfirmattion(isResultWordOfAfirmattion: $isResultWordOfAfirmattion, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
+            }
+            
+
         }
         
     }
     
-    func processFreeTime() -> Double {
+    func processFreeTime(for loveLanguageSelec: String?) -> Double {
         let totalHours: Double = Double(24 - hoursSleep)
-        var somaAtividades: Double = 0
+        var sumAtiv: Double = 0
         
-        isResultPhysicalTouch = true
-
         if let hourWorkStudy = hourWorkStudy {
-            somaAtividades += Double(hourWorkStudy)
+            sumAtiv += Double(hourWorkStudy)
         }
         if let hourTransport = hourTransport {
-            somaAtividades += Double(hourTransport)
+            sumAtiv += Double(hourTransport)
         }
         if let hourMeals = hourMeals {
-            somaAtividades += Double(hourMeals)
+            sumAtiv += Double(hourMeals)
         }
         if let hourRest = hourRest {
-            somaAtividades += Double(hourRest)
+            sumAtiv += Double(hourRest)
         }
         
-        let horasLivres = totalHours - somaAtividades
-        let porcentagemHorasLivres = (horasLivres / totalHours) * 100
+        let freeTime = totalHours - sumAtiv
+        let freeTimePorc = (freeTime / totalHours) * 100 //em porcentagem
 
-        result = porcentagemHorasLivres
+        result = freeTimePorc
+
         
-        return porcentagemHorasLivres
+        if let loveLanguage = loveLanguageSelec {
+            switch loveLanguage {
+                
+            case "Palavras de afirmação":
+                if freeTimePorc > 0 {
+                    isResultWordOfAfirmattion = true
+                } else {
+                    isResultWordOfAfirmattion = false
+                    inputFailed = true
+                }
+            
+            case "Toque físico":
+                if freeTimePorc > 0 {
+                    isResultPhysicalTouch = true
+                } else {
+                    isResultPhysicalTouch = false
+                    inputFailed = true
+                }
+                
+            case "Tempo de qualidade":
+                if freeTimePorc > 0 {
+                    isResultQualityTime = true
+                } else {
+                    isResultQualityTime = false
+                    inputFailed = true
+                }
+                
+            case "Presentes":
+                if freeTimePorc > 0 {
+                    isResultPresents = true
+                } else {
+                    isResultPresents = false
+                    inputFailed = true
+                }
+
+            case "Atos de serviço":
+                if freeTimePorc > 0 {
+                    isResultActsOfService = true
+                } else {
+                    isResultActsOfService = false
+                    inputFailed = true
+                }
+
+            default:
+                break
+            }
+        }
+        
+        return freeTimePorc
     }
 
     }
