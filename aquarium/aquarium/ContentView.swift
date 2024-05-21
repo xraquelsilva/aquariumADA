@@ -39,12 +39,9 @@ struct ContentView: View {
     
     @State var result: Double? = nil
     
+    @State var inputFailed = false //soma acima de 24h
     
-    @State var inputFailed = false //acima de 24h
-    
-    @State var faildInput = false //nao preencheu
-    
-    
+    @State var faildInput = false //nao preencheu campo obrigatório
     
     let tituloAlerta = "O seu dia está ultrapassando o limite de 24 horas"
     
@@ -301,7 +298,6 @@ struct ContentView: View {
             if isResultWordOfAfirmattion {
                 WordsOfAfirmattion(isResultWordOfAfirmattion: $isResultWordOfAfirmattion, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
             }
-            
 
         }
         
@@ -314,7 +310,7 @@ struct ContentView: View {
         sumAtiv = hourWorkStudy + hourTransport + hourMeals + hourRest
             
         let freeTime = totalHours - sumAtiv
-        let freeTimePorc = (freeTime / totalHours) * 100 //em porcentagem
+        let freeTimePorc = (freeTime / totalHours) * 100 // resultado em porcentagem
 
         result = Double(freeTimePorc)
         
