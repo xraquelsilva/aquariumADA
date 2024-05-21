@@ -40,7 +40,10 @@ struct ContentView: View {
     @State var result: Double? = nil
     
     
-    @State var inputFailed = false
+    @State var inputFailed = false //acima de 24h
+    
+    @State var faildInput = false //nao preencheu
+    
     
     
     let tituloAlerta = "O seu dia está ultrapassando o limite de 24 horas"
@@ -124,9 +127,10 @@ struct ContentView: View {
                                         .font(.system(size: 18))
                                     Slider(
                                         value: $hoursSleep,
-                                        in: 5...15,
+                                        in: 5...16,
                                         step: 1
-                                    ) {
+                                    ) 
+                                    {
                                         Text("Horas de sono")
                                     } minimumValueLabel: {
                                         Text("5")
@@ -144,9 +148,20 @@ struct ContentView: View {
                                 VStack (alignment: .leading, spacing: 5.0){
                                     Text("Quantas horas você gasta com trabalho e/ou estudos?")
                                         .font(.system(size: 18))
-                                    Slider(value: $hourWorkStudy, in: 1...8)
-                                        .accentColor(.primarycolor)
-                                        .padding(.horizontal)
+                                    Slider(
+                                        value: $hourWorkStudy,
+                                        in: 0...10,
+                                        step: 1
+                                    ) 
+                                    {
+                                        Text("Horas de trabalho/estudo")
+                                    } minimumValueLabel: {
+                                        Text("0")
+                                    } maximumValueLabel: {
+                                        Text("10")
+                                    }
+                                    .accentColor(.primarycolor)
+                                    .padding(.horizontal)
                                     
                                     Text("\(hourWorkStudy, specifier: "%.0f")")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -157,9 +172,21 @@ struct ContentView: View {
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você gasta, em média, nas refeições?")
                                         .font(.system(size: 18))
-                                    Slider(value: $hourMeals, in: 1...8)
-                                        .accentColor(.primarycolor)
-                                        .padding(.horizontal)
+                                    Slider(
+                                        value: $hourMeals,
+                                        in: 1...5,
+                                        step: 1
+                                    ) 
+                                    {
+                                        Text("Horas para refeição")
+                                    } minimumValueLabel: {
+                                        Text("1")
+                                    } maximumValueLabel: {
+                                        Text("5")
+                                    }
+                                    .accentColor(.primarycolor)
+                                    .padding(.horizontal)
+                                    
                                     
                                     Text("\(hourMeals, specifier: "%.0f")")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -170,9 +197,21 @@ struct ContentView: View {
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você tem de lazer?")
                                         .font(.system(size: 18))
-                                    Slider(value: $hourRest, in: 1...8)
-                                        .accentColor(.primarycolor)
-                                        .padding(.horizontal)
+                                    Slider(
+                                        value: $hourRest,
+                                        in: 1...8,
+                                        step: 1
+                                    ) 
+                                    {
+                                        Text("Horas de lazer")
+                                    } minimumValueLabel: {
+                                        Text("1")
+                                    } maximumValueLabel: {
+                                        Text("8")
+                                    }
+                                    .accentColor(.primarycolor)
+                                    .padding(.horizontal)
+                                    
                                     
                                     Text("\(hourRest, specifier: "%.0f")")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -183,9 +222,20 @@ struct ContentView: View {
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas gasta em locomoção?")
                                         .font(.system(size: 18))
-                                    Slider(value: $hourTransport, in: 0...8)
-                                        .accentColor(.primarycolor)
-                                        .padding(.horizontal)
+                                    Slider(
+                                        value: $hourTransport,
+                                        in: 1...5,
+                                        step: 1
+                                    ) 
+                                    {
+                                        Text("Horas em transporte")
+                                    } minimumValueLabel: {
+                                        Text("1")
+                                    } maximumValueLabel: {
+                                        Text("5")
+                                    }
+                                    .accentColor(.primarycolor)
+                                    .padding(.horizontal)
                                     
                                     Text("\(hourTransport, specifier: "%.0f")")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -209,6 +259,7 @@ struct ContentView: View {
                                 .frame(maxHeight: 50)
                                 .frame(maxWidth: .infinity)
                             }
+                            
                             .padding()
                         }
                     }
@@ -261,7 +312,6 @@ struct ContentView: View {
         let freeTimePorc = (freeTime / totalHours) * 100 //em porcentagem
 
         result = Double(freeTimePorc)
-
         
         if let loveLanguage = loveLanguageSelec {
             switch loveLanguage {
@@ -403,4 +453,3 @@ struct DropDownPicker: View {
 #Preview {
     ContentView()
 }
-
