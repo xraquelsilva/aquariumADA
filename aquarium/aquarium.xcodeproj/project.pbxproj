@@ -14,6 +14,7 @@
 		EB2D01B02BF69B3800DF08DF /* PopUpPresents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2D01AF2BF69B3800DF08DF /* PopUpPresents.swift */; };
 		EB2D01B22BF69CC100DF08DF /* PopUpActs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2D01B12BF69CC100DF08DF /* PopUpActs.swift */; };
 		EB436F472BF7BD1100A3D2DA /* LibreFranklin-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB436F462BF7BD1100A3D2DA /* LibreFranklin-VariableFont_wght.ttf */; };
+		EB4CDC072BFD31E100F98690 /* AlertaCampoObrigatorio.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CDC062BFD31E100F98690 /* AlertaCampoObrigatorio.swift */; };
 		EB86F2752BF2AE2A002BB9F6 /* aquariumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86F2742BF2AE2A002BB9F6 /* aquariumApp.swift */; };
 		EB86F2772BF2AE2A002BB9F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB86F2762BF2AE2A002BB9F6 /* ContentView.swift */; };
 		EB86F2792BF2AE2B002BB9F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB86F2782BF2AE2B002BB9F6 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		EB2D01AF2BF69B3800DF08DF /* PopUpPresents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPresents.swift; sourceTree = "<group>"; };
 		EB2D01B12BF69CC100DF08DF /* PopUpActs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpActs.swift; sourceTree = "<group>"; };
 		EB436F462BF7BD1100A3D2DA /* LibreFranklin-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LibreFranklin-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		EB4CDC062BFD31E100F98690 /* AlertaCampoObrigatorio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertaCampoObrigatorio.swift; sourceTree = "<group>"; };
 		EB86F2712BF2AE2A002BB9F6 /* aquarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aquarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB86F2742BF2AE2A002BB9F6 /* aquariumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aquariumApp.swift; sourceTree = "<group>"; };
 		EB86F2762BF2AE2A002BB9F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				EB2D01B12BF69CC100DF08DF /* PopUpActs.swift */,
 				EB86F2782BF2AE2B002BB9F6 /* Assets.xcassets */,
 				EB86F27A2BF2AE2B002BB9F6 /* Preview Content */,
+				EB4CDC062BFD31E100F98690 /* AlertaCampoObrigatorio.swift */,
 			);
 			path = aquarium;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				EB86F2752BF2AE2A002BB9F6 /* aquariumApp.swift in Sources */,
 				EB2D01A12BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift in Sources */,
 				EB2D01AE2BF699F100DF08DF /* PopUpQualityTime.swift in Sources */,
+				EB4CDC072BFD31E100F98690 /* AlertaCampoObrigatorio.swift in Sources */,
 				EB2D01B02BF69B3800DF08DF /* PopUpPresents.swift in Sources */,
 				EB2D01AC2BF6973900DF08DF /* PopUpResultWords.swift in Sources */,
 			);

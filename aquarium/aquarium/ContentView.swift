@@ -377,8 +377,10 @@ struct ContentView: View {
             }
             
             if isResultWordOfAfirmattion {
-                WordsOfAfirmattion(isResultWordOfAfirmattion: $isResultWordOfAfirmattion, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
+                WordsOfAfirmattion(isResultWordOfAfirmattion: $isResultWordOfAfirmattion, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: 
+                            "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
             }
+            AlertaTime(failedInput: $faildInput, message: "Você precisa selecionar uma linguagem do amor para continuar", action: {})
 
         }
         
