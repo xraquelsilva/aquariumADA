@@ -48,6 +48,8 @@ struct ContentView: View {
     
     let tituloAlerta = "O seu dia está ultrapassando o limite de 24 horas"
     
+    let tituloAlertaCampoAusente = "Você precisa selecionar uma linguagem do amor para continuar"
+    
     var body: some View {
         
         ZStack {
@@ -269,7 +271,10 @@ struct ContentView: View {
                 .scrollDismissesKeyboard(.immediately)
                 .alert(tituloAlerta, isPresented: $inputFailed) {
                     Button("OK", role: .cancel, action: {})
-                    }
+                }
+                .alert(tituloAlertaCampoAusente, isPresented: $faildInput) {
+                    Button("OK", role: .cancel, action: {})
+                }
                 
             } .ignoresSafeArea()
             
@@ -359,6 +364,9 @@ struct ContentView: View {
             default:
                 break
             }
+        }
+        else {
+            faildInput = true
         }
         
         return freeTimePorc
