@@ -43,9 +43,38 @@ struct ContentView: View {
     
     @State var faildInput = false //nao preencheu campo obrigatório
     
-    let tituloAlerta = "O seu dia está ultrapassando o limite de 24 horas"
+    
+    let tituloAlerta = "O seu dia está no limite de 24 horas"
     
     let tituloAlertaCampoAusente = "Você precisa selecionar uma linguagem do amor para continuar"
+    
+    var hoursTotal: Float {
+        hoursSleep + hourWorkStudy + hourMeals + hourRest + hourTransport
+    }
+    
+    var hoursTotal1: Float {
+         hourWorkStudy + hourMeals + hourRest + hourTransport
+    }
+    
+    var hoursTotal2: Float {
+        hoursSleep  + hourMeals + hourRest + hourTransport
+    }
+    
+    var hoursTotal3: Float {
+        hoursSleep + hourWorkStudy + hourRest + hourTransport
+    }
+    
+    var hoursTotal4: Float {
+        hoursSleep + hourWorkStudy + hourMeals + hourTransport
+    }
+    var hoursTotal5: Float {
+        hoursSleep + hourWorkStudy + hourMeals + hourRest
+    }
+    
+    var isOverDay: Bool {
+        hoursTotal > 24
+    }
+
     
     var body: some View {
         
@@ -124,17 +153,27 @@ struct ContentView: View {
                                 VStack(alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você dorme por dia?")
                                         .font(.system(size: 18))
-                                    Slider(
-                                        value: $hoursSleep,
-                                        in: 5...16,
+                                    Slider(value: Binding(
+                                        get: {
+                                            self.hoursSleep
+                                        }, set: {
+                                            if hoursTotal1 + $0 <= 24 {
+                                                self.hoursSleep = $0
+                                            } else {
+                                                inputFailed = true
+                                                self.hoursSleep = 24 - hoursTotal1
+                                                
+                                            }
+                                        }),
+                                        in: 1...16,
                                         step: 1
-                                    ) 
+                                    )
                                     {
                                         Text("Horas de sono")
                                     } minimumValueLabel: {
                                         Text("5")
                                     } maximumValueLabel: {
-                                        Text("15")
+                                        Text("16")
                                     }
                                     .accentColor(.primarycolor)
                                     .padding(.horizontal)
@@ -147,11 +186,21 @@ struct ContentView: View {
                                 VStack (alignment: .leading, spacing: 5.0){
                                     Text("Quantas horas você gasta com trabalho e/ou estudos?")
                                         .font(.system(size: 18))
-                                    Slider(
-                                        value: $hourWorkStudy,
-                                        in: 0...10,
+                                    Slider(value: Binding(
+                                        get: {
+                                            self.hourWorkStudy
+                                        }, set: {
+                                            if hoursTotal2 + $0 <= 24 {
+                                                self.hourWorkStudy = $0
+                                            } else {
+                                                inputFailed = true
+                                                self.hourWorkStudy = 24 - hoursTotal2
+                                                
+                                            }
+                                        }),
+                                        in: 1...10,
                                         step: 1
-                                    ) 
+                                    )
                                     {
                                         Text("Horas de trabalho/estudo")
                                     } minimumValueLabel: {
@@ -163,7 +212,7 @@ struct ContentView: View {
                                     .padding(.horizontal)
                                     
                                     Text("\(hourWorkStudy, specifier: "%.0f")")
-                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .frame(maxWidth: .infinity)
                                         .foregroundColor(.primarycolor)
                                         .font(Font.custom("LibreFranklin", size: 18))
                                 }
@@ -171,11 +220,21 @@ struct ContentView: View {
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você gasta, em média, nas refeições?")
                                         .font(.system(size: 18))
-                                    Slider(
-                                        value: $hourMeals,
+                                    Slider(value: Binding(
+                                        get: {
+                                            self.hourMeals
+                                        }, set: {
+                                            if hoursTotal3 + $0 <= 24 {
+                                                self.hourMeals = $0
+                                            } else {
+                                                inputFailed = true
+                                                self.hourMeals = 24 - hoursTotal3
+                                                
+                                            }
+                                        }),
                                         in: 1...5,
                                         step: 1
-                                    ) 
+                                    )
                                     {
                                         Text("Horas para refeição")
                                     } minimumValueLabel: {
@@ -193,51 +252,73 @@ struct ContentView: View {
                                         .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
+                                
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas você tem de lazer?")
                                         .font(.system(size: 18))
-                                    Slider(
-                                        value: $hourRest,
+                                    Slider(value: Binding(
+                                        get: {
+                                            self.hourRest
+                                        }, set: {
+                                            if hoursTotal4 + $0 <= 24 {
+                                                self.hourRest = $0
+                                            } else {
+                                                inputFailed = true
+                                                self.hourRest = 24 - hoursTotal4
+                                                
+                                            }
+                                        }),
                                         in: 1...8,
-                                        step: 1
-                                    ) 
-                                    {
-                                        Text("Horas de lazer")
-                                    } minimumValueLabel: {
+                                        step: 1,
+                                     
+                                    label: {
+                                        Text("Horas em transporte")
+                                    }, minimumValueLabel: {
                                         Text("1")
-                                    } maximumValueLabel: {
+                                    }, maximumValueLabel: {
                                         Text("8")
-                                    }
+                                    })
                                     .accentColor(.primarycolor)
                                     .padding(.horizontal)
                                     
-                                    
                                     Text("\(hourRest, specifier: "%.0f")")
-                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .frame(maxWidth: .infinity)
                                         .foregroundColor(.primarycolor)
                                         .font(Font.custom("LibreFranklin", size: 18))
                                 }
                                 
+                    
+                                
                                 VStack (alignment: .leading, spacing: 5.0) {
                                     Text("Quantas horas gasta em locomoção?")
                                         .font(.system(size: 18))
-                                    Slider(
-                                        value: $hourTransport,
+                                    Slider(value: Binding(
+                                        get: {
+                                            self.hourTransport
+                                        }, set: {
+                                            if hoursTotal5 + $0 <= 24 {
+                                                self.hourTransport = $0
+                                            } else {
+                                                inputFailed = true
+                                                self.hourTransport = 24 - hoursTotal5
+                                                
+                                            }
+                                        }),
                                         in: 1...5,
-                                        step: 1
-                                    ) 
-                                    {
+                                        step: 1,
+                                     
+                                    label: {
                                         Text("Horas em transporte")
-                                    } minimumValueLabel: {
+                                    }, minimumValueLabel: {
                                         Text("1")
-                                    } maximumValueLabel: {
+                                    }, maximumValueLabel: {
                                         Text("5")
-                                    }
+                                    })
                                     .accentColor(.primarycolor)
                                     .padding(.horizontal)
                                     
                                     Text("\(hourTransport, specifier: "%.0f")")
-                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .frame(maxWidth: .infinity)
                                         .foregroundColor(.primarycolor)
                                         .font(Font.custom("LibreFranklin", size: 18))
                                 }
@@ -318,7 +399,7 @@ struct ContentView: View {
             switch loveLanguage {
                 
             case "Palavras de afirmação":
-                if freeTimePorc > 0 {
+                if freeTimePorc >= 0 {
                     isResultWordOfAfirmattion = true
                 } else {
                     isResultWordOfAfirmattion = false
@@ -326,7 +407,7 @@ struct ContentView: View {
                 }
             
             case "Toque físico":
-                if freeTimePorc > 0 {
+                if freeTimePorc >= 0 {
                     isResultPhysicalTouch = true
                 } else {
                     isResultPhysicalTouch = false
@@ -334,7 +415,7 @@ struct ContentView: View {
                 }
                 
             case "Tempo de qualidade":
-                if freeTimePorc > 0 {
+                if freeTimePorc >= 0 {
                     isResultQualityTime = true
                 } else {
                     isResultQualityTime = false
@@ -342,7 +423,7 @@ struct ContentView: View {
                 }
                 
             case "Presentes":
-                if freeTimePorc > 0 {
+                if freeTimePorc >= 0 {
                     isResultPresents = true
                 } else {
                     isResultPresents = false
@@ -350,7 +431,7 @@ struct ContentView: View {
                 }
 
             case "Atos de serviço":
-                if freeTimePorc > 0 {
+                if freeTimePorc >= 0 {
                     isResultActsOfService = true
                 } else {
                     isResultActsOfService = false
@@ -367,8 +448,7 @@ struct ContentView: View {
         
         return freeTimePorc
     }
-
-    }
+}
     
 
 struct DropDownPicker: View {
