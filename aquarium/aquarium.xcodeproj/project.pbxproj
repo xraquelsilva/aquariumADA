@@ -21,6 +21,7 @@
 		EB86F27C2BF2AE2B002BB9F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB86F27B2BF2AE2B002BB9F6 /* Preview Assets.xcassets */; };
 		EBAE7D2A2BF5204E00447891 /* loveLanguageSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE7D292BF5204E00447891 /* loveLanguageSelection.swift */; };
 		EBAE7D462BF542FF00447891 /* MoreInfoPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE7D452BF542FF00447891 /* MoreInfoPopUp.swift */; };
+		EBE1B8E72BFE56AF001251F1 /* AlertaOverTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1B8E62BFE56AF001251F1 /* AlertaOverTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		EB86F27B2BF2AE2B002BB9F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EBAE7D292BF5204E00447891 /* loveLanguageSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loveLanguageSelection.swift; sourceTree = "<group>"; };
 		EBAE7D452BF542FF00447891 /* MoreInfoPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoPopUp.swift; sourceTree = "<group>"; };
+		EBE1B8E62BFE56AF001251F1 /* AlertaOverTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertaOverTime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +94,10 @@
 				EB2D01AD2BF699F100DF08DF /* PopUpQualityTime.swift */,
 				EB2D01AF2BF69B3800DF08DF /* PopUpPresents.swift */,
 				EB2D01B12BF69CC100DF08DF /* PopUpActs.swift */,
+				EBE1B8E62BFE56AF001251F1 /* AlertaOverTime.swift */,
+				EB4CDC062BFD31E100F98690 /* AlertaCampoObrigatorio.swift */,
 				EB86F2782BF2AE2B002BB9F6 /* Assets.xcassets */,
 				EB86F27A2BF2AE2B002BB9F6 /* Preview Content */,
-				EB4CDC062BFD31E100F98690 /* AlertaCampoObrigatorio.swift */,
 			);
 			path = aquarium;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				EBAE7D2A2BF5204E00447891 /* loveLanguageSelection.swift in Sources */,
 				EB2D01B22BF69CC100DF08DF /* PopUpActs.swift in Sources */,
 				EBAE7D462BF542FF00447891 /* MoreInfoPopUp.swift in Sources */,
+				EBE1B8E72BFE56AF001251F1 /* AlertaOverTime.swift in Sources */,
 				EB86F2772BF2AE2A002BB9F6 /* ContentView.swift in Sources */,
 				EB86F2752BF2AE2A002BB9F6 /* aquariumApp.swift in Sources */,
 				EB2D01A12BF67AFF00DF08DF /* PopUpResultFPhysicalTouch.swift in Sources */,

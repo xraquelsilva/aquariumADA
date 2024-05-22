@@ -43,11 +43,6 @@ struct ContentView: View {
     
     @State var faildInput = false //nao preencheu campo obrigatório
     
-    
-    let tituloAlerta = "O seu dia está no limite de 24 horas"
-    
-    let tituloAlertaCampoAusente = "Você precisa selecionar uma linguagem do amor para continuar"
-    
     var hoursTotal: Float {
         hoursSleep + hourWorkStudy + hourMeals + hourRest + hourTransport
     }
@@ -254,7 +249,7 @@ struct ContentView: View {
                                 
                                 
                                 VStack (alignment: .leading, spacing: 5.0) {
-                                    Text("Quantas horas você tem de lazer?")
+                                    Text("Quantas horas você tem de descanso?")
                                         .font(.system(size: 18))
                                     Slider(value: Binding(
                                         get: {
@@ -272,7 +267,7 @@ struct ContentView: View {
                                         step: 1,
                                      
                                     label: {
-                                        Text("Horas em transporte")
+                                        Text("Horas em descanso")
                                     }, minimumValueLabel: {
                                         Text("1")
                                     }, maximumValueLabel: {
@@ -304,15 +299,15 @@ struct ContentView: View {
                                                 
                                             }
                                         }),
-                                        in: 1...5,
+                                        in: 0...5,
                                         step: 1,
                                      
                                     label: {
                                         Text("Horas em transporte")
                                     }, minimumValueLabel: {
-                                        Text("1")
+                                        Text("0")
                                     }, maximumValueLabel: {
-                                        Text("5")
+                                        Text("6")
                                     })
                                     .accentColor(.primarycolor)
                                     .padding(.horizontal)
@@ -347,12 +342,6 @@ struct ContentView: View {
                     .keyboardType(.numberPad)
                 }
                 .scrollDismissesKeyboard(.immediately)
-                .alert(tituloAlerta, isPresented: $inputFailed) {
-                    Button("OK", role: .cancel, action: {})
-                }
-                .alert(tituloAlertaCampoAusente, isPresented: $faildInput) {
-                    Button("OK", role: .cancel, action: {})
-                }
                 
             } .ignoresSafeArea()
             
@@ -380,7 +369,8 @@ struct ContentView: View {
                 WordsOfAfirmattion(isResultWordOfAfirmattion: $isResultWordOfAfirmattion, title: "VOCÊ TEM \(resultFormatted)% DO SEU TEMPO LIVRE!", message: 
                             "NÃO ESQUEÇA DE LEMBRAR QUE AQUELA PESSOA É ESPECIAL!", action: {})
             }
-            AlertaTime(failedInput: $faildInput, message: "Você precisa selecionar uma linguagem do amor para continuar", action: {})
+            AlertaCampoObrigatorio(failedInput: $faildInput, message: "Você precisa selecionar uma linguagem do amor para continuar", action: {})
+            AlertaOverTime(inputFailed: $inputFailed, message: "Suas atidades estão no limite de 24 horas", action: {})
 
         }
         
