@@ -518,10 +518,12 @@ struct DropDownPicker: View {
                         selection = option
                         showDropdown.toggle()
                     }
+                    
                 }
+                
             }
         }
-        .transition(.move(edge: .top))
+        .transition(.move(edge: .bottom))
         .zIndex(1)
     }
 }
