@@ -1,15 +1,15 @@
 //
-//  AlertaCampoObrigatorio.swift
+//  AlertaOverTime.swift
 //  aquarium
 //
-//  Created by Raquel Silva dos Santos on 21/05/24.
+//  Created by Raquel Silva dos Santos on 22/05/24.
 //
 
 import SwiftUI
 
-struct AlertaCampoObrigatorio: View {
+struct AlertaOverTime: View {
     
-    @Binding var failedInput: Bool
+    @Binding var inputFailed: Bool
     
 //    let title: String
     let message: String
@@ -21,7 +21,7 @@ struct AlertaCampoObrigatorio: View {
     
     var body: some View {
         
-        if failedInput {
+        if inputFailed {
                 ZStack {
                     Color(.black)
                         .opacity(0.5)
@@ -29,17 +29,18 @@ struct AlertaCampoObrigatorio: View {
                             close()
                         }
                     VStack {
-                        Spacer()
+//                        Spacer()
                         Text(message)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(.color333030)
                             .font(.system(size: 16))
                             .frame(width: 245)
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-//                            .padding()
-                        Divider().background(.color254E5C)
+                            .padding()
+                        Divider()
+                            .background(.color254E5C)
                             .opacity(0.5)
-                        
+                        Spacer()
                         Button {
                           close()
                         } label: {
@@ -77,11 +78,11 @@ struct AlertaCampoObrigatorio: View {
         func close () {
             withAnimation(.spring()) {
                 offset = 1000
-                failedInput = false
+                inputFailed = false
             }
         }
     }
     
     #Preview {
-        AlertaCampoObrigatorio(failedInput: .constant(true), message: "Você precisa selecionar uma linguagem do amor para continuar", action: {})
+        AlertaOverTime(inputFailed: .constant(true), message: "O seu dia está no limite de 24 horas", action: {})
     }
